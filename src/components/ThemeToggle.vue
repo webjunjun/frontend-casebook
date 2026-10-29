@@ -1,20 +1,10 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { onMounted } from 'vue'
+import { useTheme } from '../composables/useTheme'
 
-type Theme = 'light' | 'dark'
+const { theme, toggle, init } = useTheme()
 
-const theme = ref<Theme>('dark')
-
-onMounted(() => {
-  theme.value = document.documentElement.dataset.theme === 'light' ? 'light' : 'dark'
-})
-
-function toggle(): void {
-  const next: Theme = theme.value === 'dark' ? 'light' : 'dark'
-  theme.value = next
-  document.documentElement.dataset.theme = next
-  localStorage.setItem('casebook-theme', next)
-}
+onMounted(init)
 </script>
 
 <template>
