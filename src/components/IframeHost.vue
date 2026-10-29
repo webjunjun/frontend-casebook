@@ -85,11 +85,7 @@ watch(status, (s) => {
 </script>
 
 <template>
-  <div
-    class="iframe-host"
-    :class="{ 'is-height-adaptive': isHeightAdaptive }"
-    :style="hostStyle"
-  >
+  <div class="iframe-host" :class="{ 'is-height-adaptive': isHeightAdaptive }" :style="hostStyle">
     <div ref="stageEl" class="host-stage">
       <div ref="containerEl" class="iframe-container"></div>
       <LoadingSkeleton v-if="status === 'loading' || status === 'idle'" />
