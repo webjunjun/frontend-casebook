@@ -1,7 +1,14 @@
 <script setup lang="ts">
+import { onMounted, ref } from 'vue'
+
 defineProps<{ message: string; caseUrl: string }>()
 
 const emit = defineEmits<{ retry: [] }>()
+
+const retryBtn = ref<HTMLButtonElement | null>(null)
+
+// 错误出现即把焦点交给重试按钮，键盘用户可直接操作
+onMounted(() => retryBtn.value?.focus())
 </script>
 
 <template>
@@ -9,7 +16,7 @@ const emit = defineEmits<{ retry: [] }>()
     <h3 class="error-title">案例加载失败</h3>
     <p class="error-message">{{ message }}</p>
     <div class="error-actions">
-      <button type="button" class="btn" @click="emit('retry')">重试</button>
+      <button ref="retryBtn" type="button" class="btn" @click="emit('retry')">重试</button>
       <a class="btn btn-ghost" :href="caseUrl" target="_blank" rel="noopener noreferrer">
         在新窗口打开
       </a>

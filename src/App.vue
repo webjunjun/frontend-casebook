@@ -48,5 +48,7 @@ import ThemeToggle from './components/ThemeToggle.vue'
 .app-main {
   flex: 1;
   min-height: 0;
+  /* 高度自适应模式下案例超出视口时由页面级滚动接管，避免嵌套滚动 */
+  overflow-y: auto;
 }
 </style>

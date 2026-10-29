@@ -34,4 +34,11 @@
     transform: rotate(360deg);
   }
 }
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-pulse {
+    animation: none;
+    border-top-color: var(--border);
+  }
+}
 </style>

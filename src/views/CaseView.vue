@@ -34,7 +34,11 @@ const caseDef = computed(() => {
 @media (max-width: 860px) {
   .case-page {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    gap: 10px;
+    height: auto;
+    min-height: 100%;
+    padding: 10px;
   }
 }
 </style>
