@@ -24,12 +24,28 @@ export interface CaseDefinition {
 
 export const cases: CaseDefinition[] = [
   {
+    id: 'fake-jump',
+    title: '仿跳一跳小游戏',
+    summary:
+      '仿微信跳一跳：长按蓄力、松手起跳，抛物线运动与落地判定驱动连续跳跃计分，相机跟随聚焦性能指标而非美术。',
+    tech: ['Three.js', '长按蓄力', '抛物线物理', '落地判定', '相机跟随'],
+    thumbnail: '/thumbnails/fake-jump.svg',
+    url: 'https://webjunjun.github.io/pure-project/threeDemo/fake_jump.html',
+    productionUrl: '',
+    protocol: false,
+    metrics: [
+      { label: '蓄力响应', value: '待测', method: 'pointerdown → 蓄力开始耗时采样' },
+      { label: '跳跃帧率', value: '待测', method: 'rAF 采样' },
+      { label: '落地判定延迟', value: '待测', method: '起跳 → 落地回调耗时采样' },
+    ],
+  },
+  {
     id: 'pixi-scroll',
-    title: 'PixiJS 长卷滚动动画',
+    title: '仿我在童话里遇到你的时光',
     summary: '滚动驱动的长卷叙事：视差分层、帧动画序列与纹理图集，节流与 ticker 同步保证流畅度。',
     tech: ['PixiJS', '滚动驱动', '纹理图集', 'rAF 同步'],
     thumbnail: '/thumbnails/pixi-scroll.svg',
-    url: 'http://localhost:5174',
+    url: 'https://webjunjun.github.io/pixijs-parallax/',
     productionUrl: '',
     protocol: false,
     metrics: [
@@ -44,44 +60,12 @@ export const cases: CaseDefinition[] = [
     summary: '高 DPI 手写签名板：Pointer Events 采集、贝塞尔平滑、撤销重做与 PNG 导出。',
     tech: ['Canvas 2D', 'Pointer Events', '贝塞尔平滑', '导出 PNG'],
     thumbnail: '/thumbnails/signature.svg',
-    url: 'http://localhost:5175',
+    url: 'https://webjunjun.github.io/pure-project/signDemo/signature.html',
     productionUrl: '',
     protocol: false,
     metrics: [
       { label: '笔画延迟', value: '待测', method: 'pointerdown → 首段渲染耗时采样' },
       { label: '内存占用', value: '待测', method: 'Chrome Performance Memory 面板' },
-    ],
-  },
-  {
-    id: 'three-house',
-    title: 'Three.js 3D 看房',
-    summary:
-      '3D 空间漫游与交互可视化：GLTF/DRACO 加载、LOD 与合批、热点标注与轨道/第一人称双模式。',
-    tech: ['Three.js', 'GLTF/DRACO', 'LOD', 'draw call 优化'],
-    thumbnail: '/thumbnails/three-house.svg',
-    url: 'http://localhost:5176',
-    productionUrl: '',
-    protocol: false,
-    metrics: [
-      { label: '首屏加载', value: '待测', method: 'Performance API + 资源加载统计' },
-      { label: 'FPS', value: '待测', method: 'rAF 采样' },
-      { label: 'draw calls', value: '待测', method: 'renderer.info.render.calls' },
-    ],
-  },
-  {
-    id: 'medieval',
-    title: 'Three.js 中世纪乡村',
-    summary: '中世纪乡村场景展示：模型加载管线、LOD、合批与阴影优化，聚焦性能指标而非美术。',
-    tech: ['Three.js', '模型加载', '合批', '阴影优化'],
-    thumbnail: '/thumbnails/medieval.svg',
-    url: 'http://localhost:5177',
-    productionUrl: '',
-    protocol: false,
-    metrics: [
-      { label: '场景加载时间', value: '待测', method: '加载管线打点统计' },
-      { label: 'FPS', value: '待测', method: 'rAF 采样' },
-      { label: 'draw calls', value: '待测', method: 'renderer.info.render.calls' },
-      { label: '显存占用', value: '待测', method: 'renderer.info.memory' },
     ],
   },
 ]

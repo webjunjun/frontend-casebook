@@ -122,7 +122,6 @@ onBeforeUnmount(() => {
 
 .viewer-summary {
   margin: 6px 0 0;
-  max-width: 640px;
   font-size: 13px;
   color: var(--text-dim);
 }

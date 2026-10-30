@@ -72,6 +72,9 @@ watch(status, (s) => {
   }
 })
 
+// 路由切换复用组件时 onMounted 不会再次触发，需监听 caseDef 重挂 iframe
+watch(() => props.caseDef, mountCase)
+
 onMounted(() => {
   mountCase()
   window.addEventListener('resize', onWindowResize)
