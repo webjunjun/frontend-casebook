@@ -77,3 +77,8 @@ export function findCase(id: string): CaseDefinition | undefined {
 export function getCaseUrl(caseDef: CaseDefinition): string {
   return import.meta.env.PROD && caseDef.productionUrl !== '' ? caseDef.productionUrl : caseDef.url
 }
+
+/** public/ 资源 URL：拼接 Vite base，兼容 GH Pages 子路径部署 */
+export function getAssetUrl(path: string): string {
+  return import.meta.env.BASE_URL + path.replace(/^\//, '')
+}

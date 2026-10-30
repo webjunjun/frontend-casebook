@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 import { RouterLink, useRoute } from 'vue-router'
-import { cases } from '../config/cases'
+import { cases, getAssetUrl } from '../config/cases'
 
 /** 1×1 透明 GIF：懒加载占位，避免未加载图片的 alt 边框 */
 const PLACEHOLDER_SRC = 'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=='
@@ -62,7 +62,7 @@ onBeforeUnmount(() => {
         >
           <img
             class="case-thumb"
-            :data-src="c.thumbnail"
+            :data-src="getAssetUrl(c.thumbnail)"
             :src="PLACEHOLDER_SRC"
             :alt="`${c.title} 缩略图`"
             width="640"
