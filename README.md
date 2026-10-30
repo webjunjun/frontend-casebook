@@ -1,8 +1,8 @@
 # Web 渲染案例作品集
 
-求职用的 Web 渲染案例集中展示壳：左侧缩略图导航 + 右侧 iframe 运行区，统一呈现 4 个独立部署的前端渲染项目（PixiJS 长卷动画、Canvas 签名板、Three.js 3D 看房、Three.js 中世纪乡村）。
+求职用的 Web 渲染案例集中展示壳：左侧缩略图导航 + 右侧 iframe 运行区，统一呈现独立部署的前端渲染项目。案例通过配置注册（[src/config/cases.ts](src/config/cases.ts)），增删案例只改配置、不改壳代码。
 
-**本仓库只做展示壳**：4 个案例是各自独立维护的项目，通过 iframe 接入；壳不包含任何案例业务代码。
+**本仓库只做展示壳**：案例是各自独立维护的项目，通过 iframe 接入；壳不包含任何案例业务代码。
 
 ## 架构
 
@@ -68,7 +68,7 @@ pnpm install
 pnpm dev                 # http://localhost:5173（dev 下 base 为 '/'）
 pnpm typecheck           # vue-tsc + tsc
 pnpm lint                # ESLint
-pnpm test                # Vitest（47 个单测）
+pnpm test                # Vitest 单元测试
 pnpm build               # typecheck + vite build（base 见下）
 pnpm preview             # 预览构建产物（挂在 base 子路径，如 /frontend-casebook/）
 ```
@@ -98,7 +98,7 @@ pnpm preview             # 预览构建产物（挂在 base 子路径，如 /fro
 ```bash
 # 方式一：Chrome DevTools 截屏后裁切到 640×400，导出 WebP
 # 方式二：Playwright 截图（无需安装依赖，npx 即用）
-npx playwright screenshot --viewport-size="1280,800" http://localhost:5174 public/thumbnails/pixi-scroll.png
+npx playwright screenshot --viewport-size="1280,800" http://localhost:5173 public/thumbnails/<caseId>.webp
 ```
 
 生成后同步修改 `config/cases.ts` 中对应案例的 `thumbnail` 路径。**禁止用 iframe 渲染缩略图**。
@@ -137,10 +137,10 @@ npx playwright screenshot --viewport-size="1280,800" http://localhost:5174 publi
 
 1. 将仓库推送到 GitHub（假定仓库名 `frontend-casebook`，与默认 base 一致）。
 2. 仓库 Settings → Pages → Build and deployment → Source 选 **GitHub Actions**。
-3. 之后每次 push 到 `main` 自动构建部署（`.github/workflows/deploy.yml`），站点地址 `https://<用户名>.github.io/frontend-casebook/`。
+3. 之后每次 push 到工作流配置的分支（`.github/workflows/deploy.yml`）自动构建部署，站点地址 `https://<用户名>.github.io/frontend-casebook/`。
 4. 案例生产地址填入 `config/cases.ts` 的 `productionUrl`。
 
-**深链接**：workflow 会把构建产物复制为 `404.html`，未知路径（如 `/frontend-casebook/cases/three-house`）由 GitHub 提供该文件，应用启动后路由正常解析——刷新/直达不 404。
+**深链接**：workflow 会把构建产物复制为 `404.html`，未知路径（如 `/frontend-casebook/cases/<caseId>`）由 GitHub 提供该文件，应用启动后路由正常解析——刷新/直达不 404。
 
 **仓库改名时**：同步修改 [vite.config.ts](vite.config.ts) 默认 base 与 `.github/workflows/deploy.yml` 的 `APP_BASE`（两者保持一致）。
 
