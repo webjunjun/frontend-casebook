@@ -68,6 +68,34 @@ export const cases: CaseDefinition[] = [
       { label: '内存占用', value: '待测', method: 'Chrome Performance Memory 面板' },
     ],
   },
+  {
+    id: 'dashboard-demo',
+    title: '数据可视化大屏',
+    summary:
+      'Vue 3 数据大屏：ECharts 趋势/排行图与 GeoJSON 区域地图，DataV 边框装饰，按设计稿等比缩放适配任意分辨率，10 秒轮询聚合多接口数据后整屏刷新。',
+    tech: ['Vue 3 + Vite', 'ECharts 6', 'DataV 边框', '等比缩放适配', '数据轮询'],
+    thumbnail: '/thumbnails/dashboard.svg',
+    url: 'https://webjunjun.github.io/vue3-dashboard-light/page1',
+    productionUrl: '',
+    protocol: false,
+    metrics: [
+      {
+        label: '首屏可交互',
+        value: '待测',
+        method: 'PerformanceObserver 采集 FCP/LCP → 首个数据帧渲染',
+      },
+      {
+        label: '轮询刷新耗时',
+        value: '待测',
+        method: '10s 轮询 → 5 个接口聚合 → 图表重绘耗时采样',
+      },
+      {
+        label: '缩放适配重排',
+        value: '待测',
+        method: 'ResizeObserver 触发后 transform 缩放的重排耗时采样',
+      },
+    ],
+  },
 ]
 
 export function findCase(id: string): CaseDefinition | undefined {
