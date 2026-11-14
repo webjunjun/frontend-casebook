@@ -96,6 +96,22 @@ export const cases: CaseDefinition[] = [
       },
     ],
   },
+  {
+    id: 'piano',
+    title: '移动端钢琴',
+    summary:
+      'Web Audio 实时合成的移动端钢琴：多点触控与滑奏连续发声，可调主音量、八度切换与延音，关注按键到发声的链路延迟。',
+    tech: ['Web Audio API', '多点触控', '滑奏识别', '实时合成'],
+    thumbnail: '/thumbnails/piano.svg',
+    url: 'https://webjunjun.github.io/pure-project/pianoDemo/piano.html',
+    productionUrl: '',
+    protocol: false,
+    metrics: [
+      { label: '发声延迟', value: '待测', method: 'pointerdown → AudioContext 发声耗时采样' },
+      { label: '多指并发', value: '待测', method: '多指同时按下时同时发声数统计' },
+      { label: '音频节点回收', value: '待测', method: '长时间弹奏后活跃 OscillatorNode 数量采样' },
+    ],
+  },
 ]
 
 export function findCase(id: string): CaseDefinition | undefined {
