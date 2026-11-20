@@ -55,6 +55,22 @@ export const cases: CaseDefinition[] = [
     ],
   },
   {
+    id: 'model-editor',
+    title: '3D 模型资产编辑器',
+    summary:
+      'React 3D 资产编辑器：支持导入 .glb / .gltf / .fbx 模型并放入场景，资产管理面板与三维视口联动，关注大模型加载与渲染性能。',
+    tech: ['React', 'Three.js', 'GLTF 加载', '3D 视口'],
+    thumbnail: '/thumbnails/model-editor.svg',
+    url: 'https://webjunjun.github.io/react-playground/editor',
+    productionUrl: '',
+    protocol: false,
+    metrics: [
+      { label: '模型加载耗时', value: '待测', method: '导入 → 模型解析完成耗时采样' },
+      { label: '视口帧率', value: '待测', method: 'rAF 采样渲染帧率' },
+      { label: '显存占用', value: '待测', method: 'WebGL renderer.info 统计' },
+    ],
+  },
+  {
     id: 'signature',
     title: 'Canvas 签名板',
     summary: '高 DPI 手写签名板：Pointer Events 采集、贝塞尔平滑、撤销重做与 PNG 导出。',
